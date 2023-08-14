@@ -7,10 +7,10 @@ export const addVideo = async (req, res, next) => {
   console.log(req.body);
   try {
     const savedVideo = await newVideo.save();
-    console.log("ok");
+    console.log("mongodb ok");
     res.status(200).json(savedVideo);
   } catch (err) {
-    console.log("fail");
+    console.log("mongodb fail");
     next(err);
   }
 };
