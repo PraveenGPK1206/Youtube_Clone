@@ -12,13 +12,15 @@ export const signup = async(req,res,next)=>{
        const hash = bcrypt.hashSync(req.body.password, salt);
        const newUser= new User({...req.body, password:hash});
    
-         const savedUser=await newUser.save();
+         await newUser.save();
+         const savedUser= await User.findOne({name:req.user.name});   
+          const {password,...others}=savedUser._doc;  
             const token=jwt.sign({id:savedUser._id},process.env.JWT);
             res.cookie("access_token",token,{
                 httpOnly:true,
             })
             .status(200)
-            .json(savedUser._doc);}
+            .json({...others});}
         
     }catch(err){
        next(err);
@@ -39,7 +41,7 @@ export const signin=async(req,res,next)=>{
         console.log(token);
         res.cookie("access_token",token,{
             httpOnly:true
-        }).status(200).json(others);
+        }).status(200).json({...others});
     }catch(err){
     next(err);
     }
