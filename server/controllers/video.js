@@ -17,9 +17,6 @@ export const addVideo = async (req, res, next) => {
 export const Upload = async(req,res,next)=>{
     try{
       console.log(req.body);
-      
-       const salt = bcrypt.genSaltSync(10);
-       const hash = bcrypt.hashSync(req.body.password, salt);
        const newUser= new Video({...req.body, password:hash});
    
        const saved=  await newUser.save();
