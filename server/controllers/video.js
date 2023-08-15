@@ -17,7 +17,7 @@ export const addVideo = async (req, res, next) => {
 export const Upload = async(req,res,next)=>{
     try{
       console.log(req.body);
-       const newUser= new Video({...req.body, password:hash});
+       const newUser= new Video(req.body);
    
        const saved=  await newUser.save();
         res.status(200).json(saved);
