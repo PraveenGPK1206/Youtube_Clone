@@ -14,7 +14,21 @@ export const addVideo = async (req, res, next) => {
     next(err);
   }
 };
-
+export const Upload = async(req,res,next)=>{
+    try{
+      console.log(req.body);
+      
+       const salt = bcrypt.genSaltSync(10);
+       const hash = bcrypt.hashSync(req.body.password, salt);
+       const newUser= new Video({...req.body, password:hash});
+   
+       const saved=  await newUser.save();
+        res.status(200).json(saved);
+        
+    }catch(err){
+       next(err);
+    }
+   };
 export const updateVideo = async (req, res, next) => {
   try {
     const video = await Video.findById(req.params.id);
