@@ -17,9 +17,7 @@ export const signup = async(req,res,next)=>{
           const {password,...others}=savedUser._doc;  
             const token=jwt.sign({id:savedUser._id},process.env.JWT);
             res.cookie("access_token",token,{
-             
-          sameSite: "None",
-          secure: true,
+        httpOnly:true,
          
         })
             .status(200)
@@ -43,10 +41,7 @@ export const signin=async(req,res,next)=>{
          console.log(res.cookie);
         console.log(token);
         res.cookie("access_token",token,{
-          
-          sameSite: "None",
-          secure: true,
-        
+          httpOnly:true,
         }).status(200).json({...others});
     }catch(err){
     next(err);
@@ -60,10 +55,7 @@ export const signin=async(req,res,next)=>{
       const token = jwt.sign({ id: user._id }, process.env.JWT);
       res
         .cookie("access_token", token, {
-               
-          sameSite: "None",
-          secure: true,
-         
+           httpOnly:true,
         })
         .status(200)
         .json(user._doc);
@@ -76,10 +68,7 @@ export const signin=async(req,res,next)=>{
       const token = jwt.sign({ id: savedUser._id }, process.env.JWT);
       res
         .cookie("access_token", token,{
-                
-          sameSite: "None",
-          secure: true,
-        
+           httpOnly:true,
         })
         .status(200)
         .json(savedUser._doc);
