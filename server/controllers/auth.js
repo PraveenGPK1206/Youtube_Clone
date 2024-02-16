@@ -17,7 +17,7 @@ export const signup = async(req,res,next)=>{
          const savedUser= await User.findOne({name:req.user.name});   
           const {password,...others}=savedUser._doc;  
             const token=jwt.sign({id:savedUser._id},process.env.JWT);
-           res.cookie("access_token",token,{httpOnly:true }).status(200).json(others)
+           res.cookie("access_token",token,{httpOnly:true }).status(200).json(others);}
         
     }catch(err){
        next(err);
