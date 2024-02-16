@@ -4,28 +4,28 @@ import { createError } from "../error.js";
 
 export const addVideo = async (req, res, next) => {
   const newVideo = new Video({ userId: req.user.id, ...req.body });
-  console.log(req.body);
+  
   try {
     const savedVideo = await newVideo.save();
-    console.log("mongodb ok");
+   
     res.status(200).json(savedVideo);
   } catch (err) {
     console.log("mongodb fail");
     next(err);
   }
 };
-export const Upload = async(req,res,next)=>{
-    try{
-      console.log(req.body);
-       const newUser= new Video(req.body);
+// export const Upload = async(req,res,next)=>{
+//     try{
+//       console.log(req.body);
+//        const newUser= new Video(req.body);
    
-       const saved=  await newUser.save();
-        res.status(200).json(saved);
+//        const saved=  await newUser.save();
+//         res.status(200).json(saved);
         
-    }catch(err){
-       next(err);
-    }
-   };
+//     }catch(err){
+//        next(err);
+//     }
+//    };
 export const updateVideo = async (req, res, next) => {
   try {
     const video = await Video.findById(req.params.id);
