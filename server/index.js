@@ -16,7 +16,7 @@ const connect=() =>{
         throw err;
     });
 };
-app.use(cors({origin: ' https://delightful-faun-21a8f4.netlify.app', 
+app.use(cors({origin: 'https://delightful-faun-21a8f4.netlify.app', 
     credentials: true}));
 app.use(cookieParser());
 app.use(express.json());
