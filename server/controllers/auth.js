@@ -17,7 +17,7 @@ export const signup = async(req,res,next)=>{
           const {password,...others}=savedUser._doc;  
             const token=jwt.sign({id:savedUser._id},process.env.JWT);
             res.cookie("access_token",token,{
-                httpOnly:true,
+             
           sameSite: "None",
           secure: true,
           domain: "https://delightful-faun-21a8f4.netlify.app",
@@ -43,7 +43,7 @@ export const signin=async(req,res,next)=>{
          console.log(res.cookie);
         console.log(token);
         res.cookie("access_token",token,{
-                httpOnly:true,
+          
           sameSite: "None",
           secure: true,
           domain: "https://delightful-faun-21a8f4.netlify.app",
@@ -60,7 +60,7 @@ export const signin=async(req,res,next)=>{
       const token = jwt.sign({ id: user._id }, process.env.JWT);
       res
         .cookie("access_token", token, {
-                httpOnly:true,
+               
           sameSite: "None",
           secure: true,
           domain: "https://delightful-faun-21a8f4.netlify.app",
@@ -76,7 +76,7 @@ export const signin=async(req,res,next)=>{
       const token = jwt.sign({ id: savedUser._id }, process.env.JWT);
       res
         .cookie("access_token", token,{
-                httpOnly:true,
+                
           sameSite: "None",
           secure: true,
           domain: "https://delightful-faun-21a8f4.netlify.app",
