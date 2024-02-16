@@ -20,7 +20,7 @@ export const signup = async(req,res,next)=>{
              
           sameSite: "None",
           secure: true,
-          domain: "https://delightful-faun-21a8f4.netlify.app",
+         
         })
             .status(200)
             .json({...others});}
@@ -46,7 +46,7 @@ export const signin=async(req,res,next)=>{
           
           sameSite: "None",
           secure: true,
-          domain: "https://delightful-faun-21a8f4.netlify.app",
+        
         }).status(200).json({...others});
     }catch(err){
     next(err);
@@ -63,7 +63,7 @@ export const signin=async(req,res,next)=>{
                
           sameSite: "None",
           secure: true,
-          domain: "https://delightful-faun-21a8f4.netlify.app",
+         
         })
         .status(200)
         .json(user._doc);
@@ -79,7 +79,7 @@ export const signin=async(req,res,next)=>{
                 
           sameSite: "None",
           secure: true,
-          domain: "https://delightful-faun-21a8f4.netlify.app",
+        
         })
         .status(200)
         .json(savedUser._doc);
